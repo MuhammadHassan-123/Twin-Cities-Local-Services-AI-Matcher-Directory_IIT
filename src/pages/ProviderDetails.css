@@ -1,0 +1,91 @@
+.provider-details {
+  padding: 60px 8%;
+  background: #f5f8fc;
+  min-height: 100vh;
+}
+
+.details-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.details-header h1 {
+  font-size: 36px;
+  color: #0f172a;
+  margin: 0;
+}
+
+.verified {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.details-body {
+  line-height: 1.8;
+  color: #475569;
+}
+
+.details-body p {
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.details-body strong {
+  color: #0f172a;
+}
+
+.details-body hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 20px 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.action-buttons button {
+  padding: 14px 28px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.call-btn {
+  background: #2563eb;
+  color: white;
+  flex: 1;
+}
+
+.call-btn:hover {
+  background: #1d4ed8;
+}
+
+.back-btn {
+  background: #f1f5f9;
+  color: #0f172a;
+  flex: 1;
+}
+
+.back-btn:hover {
+  background: #e2e8f0;
+}

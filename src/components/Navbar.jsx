@@ -1,16 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import "./Navbar.css";
 
 function Navbar() {
   return (
-    <nav>
-      <h2>Twin Cities AI</h2>
+    <header className="navbar">
 
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/providers">Providers</Link></li>
-        <li><Link to="/search">Search</Link></li>
-      </ul>
-    </nav>
+      <div className="logo">
+        <Link to="/">
+          Twin Cities <span>AI</span>
+        </Link>
+      </div>
+
+      <nav>
+
+        <NavLink to="/">
+          Home
+        </NavLink>
+
+        <NavLink to="/providers">
+          Providers
+        </NavLink>
+
+      
+      </nav>
+
+    </header>
   );
 }
 
