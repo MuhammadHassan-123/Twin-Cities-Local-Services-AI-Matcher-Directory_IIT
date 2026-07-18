@@ -1,54 +1,89 @@
-import { useState } from "react";
-import providers from "../data/providers";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import ProviderCard from "../components/ProviderCard";
 import Filters from "../components/Filters";
 import "./Providers.css";
 
 function Providers() {
+  const [providers, setProviders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [location, setLocation] = useState("All");
   const [rating, setRating] = useState("All");
   const [sortBy, setSortBy] = useState("default");
 
-  let filteredProviders = providers.filter((provider) => {
-    const matchesSearch =
-      provider.name.toLowerCase().includes(search.toLowerCase()) ||
-      provider.category.toLowerCase().includes(search.toLowerCase()) ||
-      provider.location.toLowerCase().includes(search.toLowerCase());
+  useEffect(() => {
+    fetchProviders();
+  }, [search, category, location, rating]);
 
-    const matchesCategory =
-      category === "All" || provider.category === category;
+  const fetchProviders = async () => {
+    try {
+      setLoading(true);
 
-    const matchesLocation =
-      location === "All" || provider.location === location;
+      let url = "http://localhost:5000/api/providers?";
 
-    const matchesRating =
-      rating === "All" || provider.rating >= Number(rating);
+      if (search.trim()) {
+        url += `search=${encodeURIComponent(search)}&`;
+      }
 
+      if (category !== "All") {
+        url += `category=${encodeURIComponent(category)}&`;
+      }
+
+      if (location !== "All") {
+        url += `area=${encodeURIComponent(location)}&`;
+      }
+
+      if (rating !== "All") {
+        url += `rating=${rating}&`;
+      }
+
+      const { data } = await axios.get(url);
+
+      setProviders(data);
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Backend already filtered data
+  let filteredProviders = [...providers];
+
+  // Frontend Sorting
+  switch (sortBy) {
+    case "rating":
+      filteredProviders.sort((a, b) => b.rating - a.rating);
+      break;
+
+    case "lowPrice":
+      filteredProviders.sort((a, b) => a.price - b.price);
+      break;
+
+    case "highPrice":
+      filteredProviders.sort((a, b) => b.price - a.price);
+      break;
+
+    case "name":
+      filteredProviders.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      break;
+
+    default:
+      break;
+  }
+
+  if (loading) {
     return (
-      matchesSearch &&
-      matchesCategory &&
-      matchesLocation &&
-      matchesRating
-    );
-  });
-
-  if (sortBy === "rating") {
-    filteredProviders.sort((a, b) => b.rating - a.rating);
-  }
-
-  if (sortBy === "lowPrice") {
-    filteredProviders.sort((a, b) => a.price - b.price);
-  }
-
-  if (sortBy === "highPrice") {
-    filteredProviders.sort((a, b) => b.price - a.price);
-  }
-
-  if (sortBy === "name") {
-    filteredProviders.sort((a, b) =>
-      a.name.localeCompare(b.name)
+      <h2 style={{ textAlign: "center", marginTop: "40px" }}>
+        Loading Providers...
+      </h2>
     );
   }
 
@@ -120,7 +155,7 @@ function Providers() {
               filteredProviders.map((provider) => (
 
                 <ProviderCard
-                  key={provider.id}
+                  key={provider._id}
                   provider={provider}
                 />
 

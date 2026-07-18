@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 import "./ProviderCard.css";
 
 function ProviderCard({ provider }) {
+
+  const message = `Hello ${provider.name},
+
+I found your profile on Twin Cities Local Services.
+
+I need ${provider.category} services in ${provider.area}.
+
+Please let me know your availability.
+
+Thank you.`;
+
   return (
     <div className="provider-card">
 
@@ -24,7 +35,7 @@ function ProviderCard({ provider }) {
       <div className="provider-info">
 
         <p>
-          📍 {provider.location}
+          📍 {provider.area}
         </p>
 
         <p>
@@ -40,7 +51,7 @@ function ProviderCard({ provider }) {
       <div className="card-buttons">
 
         <a
-          href={`https://wa.me/92${provider.phone.slice(1)}`}
+          href={`https://wa.me/${provider.whatsapp}?text=${encodeURIComponent(message)}`}
           target="_blank"
           rel="noreferrer"
         >
@@ -49,7 +60,7 @@ function ProviderCard({ provider }) {
           </button>
         </a>
 
-        <Link to={`/provider/${provider.id}`}>
+        <Link to={`/provider/${provider._id}`}>
           <button className="details-btn">
             View Details
           </button>

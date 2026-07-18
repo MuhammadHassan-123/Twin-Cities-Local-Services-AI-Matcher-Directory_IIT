@@ -12,24 +12,22 @@ function Filters({
 }) {
   return (
     <aside className="filters">
-
       <h2>Filters</h2>
 
+      {/* Search */}
       <div className="filter-group">
-
         <label>Search</label>
 
         <input
           type="text"
-          placeholder="Search provider..."
+          placeholder="Search by name or category..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-
       </div>
 
+      {/* Category */}
       <div className="filter-group">
-
         <label>Category</label>
 
         <select
@@ -41,45 +39,29 @@ function Filters({
           <option value="Electrician">Electrician</option>
           <option value="Tutor">Tutor</option>
           <option value="Cleaner">Cleaner</option>
-          <option value="Painter">Painter</option>
           <option value="AC Technician">AC Technician</option>
-          <option value="Computer Repair">Computer Repair</option>
-          <option value="Locksmith">Locksmith</option>
         </select>
-
       </div>
 
+      {/* Area */}
       <div className="filter-group">
-
-        <label>Location</label>
+        <label>Area</label>
 
         <select
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         >
-          <option value="All">All Locations</option>
-          <option value="G-9, Islamabad">G-9 Islamabad</option>
-          <option value="F-10, Islamabad">F-10 Islamabad</option>
-          <option value="I-8, Islamabad">I-8 Islamabad</option>
-          <option value="Blue Area">Blue Area</option>
-          <option value="Bahria Town, Rawalpindi">
-            Bahria Town
-          </option>
-          <option value="DHA Phase 2">
-            DHA Phase 2
-          </option>
-          <option value="Gulberg Greens">
-            Gulberg Greens
-          </option>
-          <option value="Saddar, Rawalpindi">
-            Saddar
-          </option>
+          <option value="All">All Areas</option>
+          <option value="G-9 Islamabad">G-9 Islamabad</option>
+          <option value="F-10 Islamabad">F-10 Islamabad</option>
+          <option value="G-11 Islamabad">G-11 Islamabad</option>
+          <option value="Bahria Town">Bahria Town</option>
+          <option value="DHA Phase 2">DHA Phase 2</option>
         </select>
-
       </div>
 
+      {/* Rating */}
       <div className="filter-group">
-
         <label>Minimum Rating</label>
 
         <select
@@ -91,9 +73,7 @@ function Filters({
           <option value="4.7">4.7+</option>
           <option value="4.8">4.8+</option>
         </select>
-
       </div>
-
     </aside>
   );
 }

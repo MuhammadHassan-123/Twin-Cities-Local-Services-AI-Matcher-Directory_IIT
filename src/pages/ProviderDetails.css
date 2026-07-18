@@ -5,12 +5,12 @@
 }
 
 .details-card {
-  background: white;
+  background: #ffffff;
+  max-width: 900px;
+  margin: auto;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 0 auto;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .details-header {
@@ -21,9 +21,9 @@
 }
 
 .details-header h1 {
+  margin: 0;
   font-size: 36px;
   color: #0f172a;
-  margin: 0;
 }
 
 .verified {
@@ -35,57 +35,146 @@
 }
 
 .details-body {
-  line-height: 1.8;
-  color: #475569;
+  line-height: 1.9;
 }
 
 .details-body p {
   margin: 16px 0;
-  font-size: 16px;
+  font-size: 17px;
+  color: #475569;
 }
 
 .details-body strong {
   color: #0f172a;
 }
 
-.details-body hr {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-  margin: 20px 0;
-}
+/* ---------- Buttons ---------- */
 
-.action-buttons {
+.details-buttons {
   display: flex;
-  gap: 15px;
-  margin-top: 30px;
+  gap: 18px;
+  margin: 35px 0;
+  flex-wrap: wrap;
 }
 
-.action-buttons button {
-  padding: 14px 28px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.3s;
-}
-
-.call-btn {
-  background: #2563eb;
-  color: white;
+.details-buttons a {
+  text-decoration: none;
   flex: 1;
 }
 
-.call-btn:hover {
-  background: #1d4ed8;
+.whatsapp-btn,
+.back-btn {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 15px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .3s ease;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(37,211,102,.25);
 }
 
 .back-btn {
-  background: #f1f5f9;
-  color: #0f172a;
-  flex: 1;
+  background: #2563eb;
+  color: white;
 }
 
 .back-btn:hover {
-  background: #e2e8f0;
+  background: #1d4ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(37,99,235,.25);
+}
+
+.whatsapp-btn svg,
+.back-btn svg {
+  font-size: 20px;
+}
+
+/* ---------- Reviews ---------- */
+
+.review-card {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.review-card h4 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.review-card p {
+  margin: 8px 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ---------- Divider ---------- */
+
+hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 35px 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width:768px){
+
+  .provider-details{
+    padding:30px 5%;
+  }
+
+  .details-card{
+    padding:25px;
+  }
+
+  .details-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .details-header h1{
+    font-size:28px;
+  }
+
+  .details-buttons{
+    flex-direction:column;
+  }
+
+  .details-buttons a{
+    width:100%;
+  }
+
+  .whatsapp-btn,
+  .back-btn{
+    width:100%;
+  }
+
 }
