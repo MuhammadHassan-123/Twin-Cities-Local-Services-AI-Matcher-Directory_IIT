@@ -2,12 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+dotenv.config();
+
 const connectDB = require("./config/db");
 
 const providerRoutes = require("./routes/providerRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
-
-dotenv.config();
+const recommendationRoutes = require("./routes/recommendationRoutes");
 
 connectDB();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 // Routes
 app.use("/api/providers", providerRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/recommendation", recommendationRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
